@@ -1,18 +1,20 @@
 public class Record {
-    private String Anno, regione, percentuale;
+    private String regione;
+    private int Anno;
+    private double percentuale;
 
-    public Record(String anno, String regione, String percentuale) {
+    public Record(int anno, String regione, double percentuale) {
         this.Anno = anno;
         this.regione = regione;
         this.percentuale = percentuale;
     }
 
-    public String getAnno() {return Anno;}
-    public void setAnno(String anno) {Anno = anno;}
+    public int getAnno() {return Anno;}
+    public void setAnno(int anno) {Anno = anno;}
     public String getRegione() {return regione;}
     public void setRegione(String regione) {this.regione = regione;}
-    public String getPercentuale() {return percentuale;}
-    public void setPercentuale(String percentuale) {this.percentuale = percentuale;}
+    public double getPercentuale() {return percentuale;}
+    public void setPercentuale(double percentuale) {this.percentuale = percentuale;}
 
     @Override
     public String toString() {
