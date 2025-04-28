@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class memoria {
     ArrayList<Record> memoria;
+    ArrayList<Record> medie=new ArrayList<>();
 
     public memoria(File file) {
         this.memoria = new ArrayList<>();

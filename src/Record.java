@@ -1,4 +1,4 @@
-public class Record {
+public class Record implements Comparable<Record>{
     private String regione;
     private int Anno;
     private double percentuale;
@@ -19,5 +19,12 @@ public class Record {
     @Override
     public String toString() {
         return "Record{" + "Anno='" + Anno + '\'' + ", regione='" + regione + '\'' + ", percentuale='" + percentuale + '\'' + '}';
+    }
+
+    @Override
+    public  int compareTo(Record o) {
+        if(percentuale==o.getPercentuale()) return 0;
+        else if(percentuale>o.getPercentuale()) return 1;
+        else return -1;
     }
 }
