@@ -23,7 +23,7 @@ public class memoria {
             while ((s=r.readLine())!=null){
                 String[]Split=s.split(";");
                 if(Split.length==3){
-                    memoria.add(new Record(Integer.parseInt(Split[0]), Split[1], Double.parseDouble(Split[2])))
+                    memoria.add(new Record(Integer.parseInt(Split[0]), Split[1], Double.parseDouble(Split[2])));
                 }
             }
         } catch (FileNotFoundException e) {
