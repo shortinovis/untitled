@@ -31,9 +31,41 @@ public class memoria {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
-    public void medie(){
+    public boolean addRecord(Record record){ return this.memoria.add(record); }
+    public boolean removeRecord(Record record){ return this.memoria.remove(record); }
+    public int ricercaRecord(Record record){ return this.memoria.indexOf(record); }
 
+    //Metodo ricerca ed aggiorna
+    private void ricercaAggiornaMedia(Record rg){
+        int index=medie.indexOf(rg);
+        if (index!=-1){ //regione già presente quindi calcolo la media
+            Record r=medie.get(index);
+            r.setPercentuale((r.getPercentuale()+rg.getPercentuale())/2);
+        }else { //regione nuova
+            medie.add(rg);
+        }
+    }
+
+
+    public void reportInHtml(){
+        try(BufferedReader reader=new BufferedReader(new FileReader("Users/cortinovis.21123/IdeaProjects/elaborazione csv/src/Cortinovis.csv")); PrintWriter writer=new PrintWriter(new FileWriter("cortinovis.21123/IdeaProjects/elaborazione csv/index.html",false))){
+            writer.print("<!DOCTYPE html>\n<html lang=\"it\">\n<head>\n<title>Visualizzazione</title>\n" + "</head>\n<body>\n<h1>Tabella dei dati</h1>");
+            writer.print("<table>\n<tr>\n");
+
+            String intestazione=reader.readLine();
+            for (String campoIntestazione : intestazione.split(";")) writer.println("<th>"+campoIntestazione.trim()+"</th>");
+            writer.println("</tr>");
+
+            String next;
+            while ((next= reader.readLine())!=null) {
+                writer.println("<tr>");
+                for (String campoCorpo : next.split(";")) writer.println("<td>"+campoCorpo.trim()+"</td>");
+                writer.println("</tr>");
+            }
+            writer.println("</table>\n</body>\n</html>");
+        }catch (IOException e){
+            throw new RuntimeException(e);
+        }
     }
 }
